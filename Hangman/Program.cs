@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 
 Console.ForegroundColor = ConsoleColor.Green;
 
@@ -11,8 +12,12 @@ Console.WriteLine("1. Start a singleplayer game.");
 Console.WriteLine("2. Start a local multiplayer game.");
 Console.WriteLine("3. Rules.");
 Console.WriteLine("4. Exit.");
+Console.WriteLine();
+
 
 string? choice = Console.ReadLine();
+
+
 
 // Choice 1 begins.
 
@@ -106,6 +111,20 @@ if (choice == "1" || choice == "start")
                     Console.Clear();
                     break;
 
+            } 
+        }
+        else
+        {
+            int letters = 0;
+            for(int i = 0; i < secretWord.Length; i++) {
+                if(guess == secretWord[i].ToString())
+                {
+                    letters++;
+                    guessWord.Insert(i, guess);
+                    Console.WriteLine($"Congratulations! I found {letters} in the word you're looking for!");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                }
             }
         }
     }
